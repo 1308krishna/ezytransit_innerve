@@ -19,19 +19,21 @@ class DrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    User? user = FirebaseAuth.instance.currentUser;
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          const DrawerHeader(
-            decoration: BoxDecoration(
+          DrawerHeader(
+            decoration: const BoxDecoration(
               color: Colors.green,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 40,
                   backgroundColor: Colors.white,
                   child: Icon(
@@ -40,10 +42,10 @@ class DrawerWidget extends StatelessWidget {
                     color: Colors.green,
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 Text(
-                  'Welcome, User!',
-                  style: TextStyle(
+                  'Welcome, ${user?.displayName ?? 'User'}!',
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
                   ),
